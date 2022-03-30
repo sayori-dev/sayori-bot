@@ -55,7 +55,7 @@ const peoples = Math.floor(Math.random() * people.length);
 
 const real = Math.floor(Math.random() * 40) +1;
 
-if(real < "20"){
+if(real < "10"){
     const response = await profileModel.findOneAndUpdate({
         userID: interaction.member.id           
     }, 

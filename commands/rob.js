@@ -1,59 +1,59 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const profileModel = require('../models/profileSchema');
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
-    name: 'rob',
-    cooldown: 20,
-    discription: "this is a rob command!",
-    async execute(client, message, args, Discord, cmd, profileData){
-        const member = message.mentions.users.first();
-        const randomNumber = Math.floor(Math.random() * 50) + 1;
-        const dotData = await profileModel.findOne({ userID: member.id});
-
-        if (!dotData){ return message.channel.send ("this user doesn't exist in the db")
-        }else{
-
-        if (profileData.robbing === 0){
-            message.channel.send("you can't rob anyone if you don't wanna get robbed")
-        }else{
-
-        if (dotData.robbing === 0){
-            message.channel.send("this user doesn't wanna get robbed :sob:")
-        }else{
-
-        if (member.id === message.author.id){
-            message.channel.send("you cant rob yourself can you?")
-        }else{
-
-            if (dotData.coins < randomNumber){
-                message.channel.send("this user doesn't have enough coins :sob:") 
-            }else{
-                await profileModel.findOneAndUpdate(
-                    {
-                    userID: member.id
-                    },
-                    {
-                    $inc: {
-                        coins: -randomNumber,
-                    }
-    
-                }
-            );
-            await profileModel.findOneAndUpdate(
-                {
-                userID: message.author.id
-                },
-                {
-                $inc: {
-                    coins: randomNumber,
-                }
-    
-            }
-        );
-    
-            return message.channel.send(`${message.author.username}, great job you stole ${randomNumber}, coins`)
-            }
-        } 
-        }   
+	data: new SlashCommandBuilder()
+		.setName('robbing')
+		.setDescription('rob an user')
+        .addUserOption(option => option.setName('target').setDescription('Select a user')),
+	async execute(interaction){
+        let profileData;
+    try {
+        profileData = await profileModel.findOne({ userID: interaction.member.id });
+        if (!profileData) {
+            let profile = await profileModel.create({
+                userID: interaction.member.id,
+                serverID: interaction.guild.id,
+                coins: 1000,
+                bank: 0,
+                robbing: 1,
+                cohead: 0,
+                copens: 0,
+                noba: 0,
+            });
+            profile.save();
+        }
+    }catch(err) {
+        console.log(err);
     }
+    const user = interaction.options.getUser('target');
+    const dotData = await profileModel.findOne({ userID: user.id});
+    const amount = Math.floor(Math.random() * 50) + 1;
+    if(!dotData || profileData.robbing === 0 || dotData.robbing === 0){return interaction.reply("this user doesn't exist/doesn't wanna get robbed or you dont wanna get robbed")
+}else if(user.id === profileData.userID || dotData.coins < amount ){return interaction.reply("this is you! or this user doesn't have enough coins!")
+}else{
+      await profileModel.findOneAndUpdate(        {
+        userID: user.id
+        },
+        {
+        $inc: {
+        coins: -amount,
+        }
+
     }
+);
+await profileModel.findOneAndUpdate(        {
+    userID: interaction.member.id  
+},
+{
+    $inc: {
+    coins: amount,
     }
+ 
 }
+);  
+    await interaction.reply(`${interaction.member} just robbed ${user} from ${amount} coins!`)
+}
+    }
+    }

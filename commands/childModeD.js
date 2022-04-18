@@ -5,11 +5,11 @@ const amount = 1
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('rob')
-		.setDescription('turns off/on robbing')
+		.setName('child')
+		.setDescription('turns off/on child safety')
         .addStringOption(option =>
             option.setName('category')
-                .setDescription('The rob category')
+                .setDescription('The child category')
                 .setRequired(true)
                 .addChoice('on', 'turns it on')
                 .addChoice('off', 'turns it off')),
@@ -27,6 +27,7 @@ module.exports = {
                                     coins: 1000,
                                     bank: 0,
                                     robbing: 1,
+                                    childSafe: 0,
                                     cohead: 0,
                                     copens: 0,
                                     noba: 0,
@@ -36,13 +37,13 @@ module.exports = {
                         }catch(err) {
                             console.log(err);
                         }
-                    if (profileData.robbing > 0) { 
+                    if (profileData.childSafe > 0) { 
                         await profileModel.findOneAndUpdate(        {
                             userID: interaction.member.id
                             },
                             {
                             $inc: {
-                            robbing: -amount,
+                            childSafe: -amount,
                             }
                     
                         }
@@ -62,6 +63,7 @@ module.exports = {
                 coins: 1000,
                 bank: 0,
                 robbing: 1,
+                childSafe: 0,
                 cohead: 0,
                 copens: 0,
                 noba: 0,
@@ -71,13 +73,13 @@ module.exports = {
     }catch(err) {
         console.log(err);
     }
-if (profileData.robbing < 1) { 
+if (profileData.childSafe < 1) { 
     await profileModel.findOneAndUpdate(        {
         userID: interaction.member.id
         },
         {
         $inc: {
-        robbing: amount,
+        childSafe: amount,
         }
 
     }

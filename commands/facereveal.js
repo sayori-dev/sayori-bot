@@ -1,7 +1,10 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-    name: 'facereveal',
-    discription: "this is a face reveal command!",
-    execute(client, message, args, Discord ){
+	data: new SlashCommandBuilder()
+		.setName('facereveal')
+		.setDescription('shows my face'),
+	async execute(interaction) {               
         const Responses = [
             "no thx",
             "how about no",
@@ -10,8 +13,7 @@ module.exports = {
             "n-no"
         ];
         
-        const Response = Math.floor(Math.random() * Responses.length);
-        
-        message.channel.send(Responses[Response])
-}
-}
+        const Response = Math.floor(Math.random() * Responses.length);       
+        await interaction.reply(Responses[Response])
+	},
+};

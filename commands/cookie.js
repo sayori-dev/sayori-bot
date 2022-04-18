@@ -1,7 +1,10 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
-    name: 'cookie',
-    discription: "this is a soup command!",
-    execute(client, message, args, Discord){
-        message.channel.send("Thanks for the cookie!~ *noms cookie*")
-    }
-}           
+	data: new SlashCommandBuilder()
+		.setName('cookie')
+		.setDescription('gives the bot a cookie for their good work!'),
+		async execute(interaction) {
+			await interaction.reply	('Thanks! *noms cookie*')
+	}
+};

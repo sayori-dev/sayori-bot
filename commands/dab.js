@@ -1,8 +1,10 @@
-module.exports = {
-    name: 'dab',
-    discription: "this is a dab command!",
-    execute(client, message, args, Discord ){
-        message.channel.send('thats so 2016, no......');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
-    }
-}
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('dab')
+		.setDescription('please dont make me do this'),
+	async execute(interaction) {
+		await interaction.reply('thats so 2016, no...')
+	},
+};

@@ -63,7 +63,7 @@ module.exports = {
         },
     );
     const copen = (profileData.copens + 1)
-    interaction.reply(`thanks for buying this item, and you now own ${copen} of this item`)
+    interaction.reply(`thanks for buying this item, and you now own ${copen} of this item`);
     }else if(string == 'noba' && profileData.coins > '10000'){
         const response = await profileModel.findOneAndUpdate({
             userID: interaction.member.id           
@@ -77,9 +77,9 @@ module.exports = {
         },
     );
     const noab = (profileData.noba + 1)
-    interaction.reply(`thanks for buying this item, and you now own ${noab} of this item`)
+    interaction.reply(`thanks for buying this item, and you now own ${noab} of this item`);
     }else{
-    interaction.reply(`you dont have enough money for the item`)
+    interaction.reply(`you dont have enough money for the item`);
     }
     }
 }

@@ -5,6 +5,6 @@ module.exports = {
 		.setName('cookie')
 		.setDescription('gives the bot a cookie for their good work!'),
 		async execute(interaction) {
-			await interaction.reply	('Thanks! *noms cookie*')
+			await interaction.reply	('Thanks! *noms cookie*');
 	}
 };

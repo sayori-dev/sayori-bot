@@ -65,7 +65,7 @@ if(real < "19"){
         },
     }
 );
-    return interaction.reply(`${interaction.member}, You asked ${people[peoples]} but, They said "ask your brother"`)  
+    return interaction.reply(`${interaction.member}, You asked ${people[peoples]} but, They said "ask your brother"`);  
 }else if(randomNumber == "1" ){
     return interaction.reply(`${interaction.member}, Great job you asked ${people[peoples]} for ${randomNumber} Coin`);
 }else{

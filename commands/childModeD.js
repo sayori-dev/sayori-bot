@@ -48,9 +48,9 @@ module.exports = {
                     
                         }
                     );
-                    return interaction.reply("done!")
+                    return interaction.reply("done!");
                     } else {
-                        interaction.reply("it's already off")
+                        interaction.reply("it's already off");
                     }
 					}else if(string == 'category', 'on'){
 						let profileData;
@@ -84,9 +84,9 @@ if (profileData.childSafe < 1) {
 
     }
 );
-return interaction.reply("done!")
+return interaction.reply("done!");
 } else {
-    interaction.reply("it's already on")
+    interaction.reply("it's already on");
 }
 					}
                 }catch(err){

@@ -30,9 +30,9 @@ module.exports = {
 		}
         const string = interaction.options.getString('wiki');
 		if(profileData.childSafe == 1 && string.includes("sex") || profileData.childSafe == 1 && string.includes("gore") || profileData.childSafe == 1 && string.includes("suicide") || profileData.childSafe == 1 && string.includes("hentai") || profileData.childSafe == 1 && string.includes("guro")){
-			interaction.reply("you are a child, don't lookt this up")
+			interaction.reply("you are a child, don't lookt this up");
 		}else{
-		await interaction.reply(`https://en.wikipedia.org/wiki/${string}`)
+		await interaction.reply(`https://en.wikipedia.org/wiki/${string}`);
 		}
 
 	},

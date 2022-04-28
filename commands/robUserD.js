@@ -49,11 +49,12 @@ await profileModel.findOneAndUpdate(        {
 {
     $inc: {
     coins: amount,
+    crime: 0.5,
     }
  
 }
 );  
-    await interaction.reply(`${interaction.member} just robbed ${user} from ${amount} coins!`)
+    await interaction.reply(`${interaction.member} just robbed ${user} from ${amount} coins!`);
 }
     }
     }

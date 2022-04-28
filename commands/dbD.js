@@ -14,11 +14,14 @@ let profile = await profileModel.create({
     bank: 0,
     robbing: 1,
     childSafe: 0,
+    crime: 0,
+    work: 0,
+    level: 0,
     cohead: 0,
     copens: 0,
     noba: 0,
 });
 profile.save();
-        interaction.reply("you've now been added to the DB. Thank you so much!")
+        interaction.reply("you've now been added to the DB. Thank you so much!");
     }
 }

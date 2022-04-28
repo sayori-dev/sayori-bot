@@ -5,6 +5,6 @@ module.exports = {
 		.setName('dab')
 		.setDescription('please dont make me do this'),
 	async execute(interaction) {
-		await interaction.reply('thats so 2016, no...')
+		await interaction.reply('thats so 2016, no...');
 	},
 };

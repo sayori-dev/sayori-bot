@@ -32,7 +32,7 @@ module.exports = {
 		if(profileData.childSafe == 1 && string.includes("sex") || profileData.childSafe == 1 && string.includes("gore") || profileData.childSafe == 1 && string.includes("suicide") || profileData.childSafe == 1 && string.includes("hentai") || profileData.childSafe == 1 && string.includes("guro") || profileData.childSafe == 1 && string.includes("porn")){
 			interaction.reply("you are a child, don't lookt this up")
 		}else{
-		await interaction.reply(`https://www.reddit.com/r/${string}/`)
+		await interaction.reply(`https://www.reddit.com/r/${string}/`);
 		}
 	},
 };

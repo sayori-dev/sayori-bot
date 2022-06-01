@@ -19,6 +19,8 @@ module.exports = {
                 robbing: 1,
                 childSafe: 0,
                 crime: 0,
+                work: 0,
+                level: 0,
                 cohead: 0,
                 copens: 0,
                 noba: 0,
@@ -30,8 +32,21 @@ module.exports = {
     }
     const real = Math.floor(Math.random() * 40) +1;
 
-    if(profileData.crime == 0){return interaction.reply("you are as clean as you can be");
-    }else if(real < 19){return interaction.reply("you tried to do community service, but it didnt help");
+    if(profileData.crime == 0 || profileData.crime == 0 && real < 10 && profileData.level < 1){
+        if(real < 10 && profileData.level < 1){
+            await profileModel.findOneAndUpdate(        {
+                userID: interaction.member.id  
+            },
+            {
+                $inc: {
+                level: 1,
+                }
+             
+            }
+            ); 
+            interaction.reply("you got some reputation :D");
+        }else{return interaction.reply(`you are as clean as you can be ${real}`);}
+    }else if(real < 19){return interaction.followUp("you tried to do community service, but it didnt help");
     }else{
 await profileModel.findOneAndUpdate(        {
     userID: interaction.member.id  

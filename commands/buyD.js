@@ -13,7 +13,9 @@ module.exports = {
                 .setRequired(true)
                 .addChoice('head cooler', 'cohead')
                 .addChoice('colored pens', 'copens')
-                .addChoice('bank notes', 'noba')),
+                .addChoice('bank notes', 'noba')
+                .addChoice('fishing rod', 'frod')
+                .addChoice('hunting rifle', 'hrif')),
 	async execute(interaction){
         let profileData;
     try {
@@ -26,9 +28,16 @@ module.exports = {
                 bank: 0,
                 robbing: 1,
                 childSafe: 0,
+                crime: 0,
+                work: 0,
+                level: 0,
                 cohead: 0,
                 copens: 0,
                 noba: 0,
+                frod: 0,
+                rgun: 0,
+                fish: 0,
+                animal: 0,
             });
             profile.save();
         }
@@ -78,8 +87,36 @@ module.exports = {
     );
     const noab = (profileData.noba + 1)
     interaction.reply(`thanks for buying this item, and you now own ${noab} of this item`);
+    }else if(string == 'frod' && profileData.coins > '300'){
+        const response = await profileModel.findOneAndUpdate({
+            userID: interaction.member.id           
+        }, 
+        {
+            $inc: {
+                coins: -300,
+                frod: 1,
+
+            },
+        },
+    );
+    const frod = (profileData.frod + 1)
+    interaction.reply(`thanks for buying this item, and you now own ${frod} of this item`)
+    }else if(string == 'hrif' && profileData.coins > '350'){
+        const response = await profileModel.findOneAndUpdate({
+            userID: interaction.member.id           
+        }, 
+        {
+            $inc: {
+                coins: -300,
+                rgun: 1,
+
+            },
+        },
+    );
+    const hrif = (profileData.rgun + 1)
+    interaction.reply(`thanks for buying this item, and you now own ${hrif} of this item`)
     }else{
     interaction.reply(`you dont have enough money for the item`);
     }
-    }
+}
 }

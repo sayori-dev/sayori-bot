@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const profileModel = require('../models/profileSchema');
 const { MessageEmbed } = require('discord.js');
+const { off } = require('../models/profileSchema');
 
 
 module.exports = {
@@ -19,72 +20,44 @@ module.exports = {
                 bank: 0,
                 robbing: 1,
                 childSafe: 0,
+                crime: 0,
+                work: 0,
+                level: 0,
                 cohead: 0,
                 copens: 0,
                 noba: 0,
+                frod: 0,
+                rgun: 0,
+                fish: 0,
+                animal: 0,
             });
             profile.save();
         }
     }catch(err) {
         console.log(err);
     }
-    interaction.reply('hope you are enjoying the bot!')
-    if(profileData.robbing == 1 && profileData.childSafe == 1){
+
+    const funny = profileData.childSafe === 1 ? 'on' : 'off'
+    const funny1 = profileData.robbing === 1 ? 'on' : 'off'
+
         const embed1 = new MessageEmbed()
         .setTitle('your balace!')
         .setColor('#b499a1')
         .addFields(
             {name: "coin balance", value: `${profileData.coins}`},
             {name: "bank balance", value: `${profileData.bank}`},
-            {name: "robbing", value: "on"},
-            {name: "child mode", value: "on"},
-            {name: "head coolers", value: `${profileData.cohead}`},
-            {name: "coloring pens", value: `${profileData.copens}`},
-            {name: "bank notes", value: `${profileData.noba}`},        
-        )
-        interaction.channel.send({ embeds: [embed1] });
-    }else if(profileData.robbing == 0 && profileData.childSafe == 1){
-        const embed1 = new MessageEmbed()
-        .setTitle('your balace!')
-        .setColor('#b499a1')
-        .addFields(
-            {name: "coin balance", value: `${profileData.coins}`},
-            {name: "bank balance", value: `${profileData.bank}`},
-            {name: "robbing", value: "off"},
-            {name: "child mode", value: "on"},       
+            {name: "robbing", value: `${funny1}`},
+            {name: "child mode", value: `${funny}`},
+            {name: "crime", value: `${profileData.crime}`},
             {name: "head coolers", value: `${profileData.cohead}`},
             {name: "coloring pens", value: `${profileData.copens}`},
             {name: "bank notes", value: `${profileData.noba}`}, 
+            {name: "fishing rods", value: `${profileData.frod}`},     
+            {name: "hunting guns", value: `${profileData.rgun}`},     
+            {name: "fish", value: `${profileData.fish}`},      
+            {name: "animals", value: `${profileData.animal}`},    
+
         )
         interaction.channel.send({ embeds: [embed1] });
-    }else if(profileData.robbing == 1 && profileData.childSafe == 0){
-        const embed1 = new MessageEmbed()
-        .setTitle('your balace!')
-        .setColor('#b499a1')
-        .addFields(
-            {name: "coin balance", value: `${profileData.coins}`},
-            {name: "bank balance", value: `${profileData.bank}`},
-            {name: "robbing", value: "on"},
-            {name: "child mode", value: "off"},
-            {name: "head coolers", value: `${profileData.cohead}`},
-            {name: "coloring pens", value: `${profileData.copens}`},
-            {name: "bank notes", value: `${profileData.noba}`}, 
-        )
-        interaction.channel.send({ embeds: [embed1] });
-    }else{
-        const embed1 = new MessageEmbed()
-        .setTitle('your balace!')
-        .setColor('#b499a1')
-        .addFields(
-            {name: "coin balance", value: `${profileData.coins}`},
-            {name: "bank balance", value: `${profileData.bank}`},
-            {name: "robbing", value: "off"},
-            {name: "child mode", value: "on"},
-            {name: "head coolers", value: `${profileData.cohead}`},
-            {name: "coloring pens", value: `${profileData.copens}`},
-            {name: "bank notes", value: `${profileData.noba}`}, 
-        )
-        interaction.channel.send({ embeds: [embed1] });
-    };
     }
 }

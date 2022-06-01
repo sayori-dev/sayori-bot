@@ -14,6 +14,8 @@ module.exports = {
         {name: "head cooler", value: `${items.coolhead}`},
         {name: "colored pens", value: `${items.colored_pens}`},
         {name: "bank note", value: `${items.bank_note}`},
+        {name: "fishing rod", value: `${items.fishing_rod}`},
+        {name: "hunting rifle", value: `${items.hunt_rifle}`}
     )
     interaction.reply("omor");
     interaction.deleteReply();

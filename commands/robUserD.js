@@ -6,27 +6,11 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('robbing')
 		.setDescription('rob an user')
-        .addUserOption(option => option.setName('target').setDescription('Select a user')),
+        .addUserOption(option => option.setName('target').setDescription('Select a user')
+        .setRequired(true)),
 	async execute(interaction){
         let profileData;
-    try {
         profileData = await profileModel.findOne({ userID: interaction.member.id });
-        if (!profileData) {
-            let profile = await profileModel.create({
-                userID: interaction.member.id,
-                serverID: interaction.guild.id,
-                coins: 1000,
-                bank: 0,
-                robbing: 1,
-                cohead: 0,
-                copens: 0,
-                noba: 0,
-            });
-            profile.save();
-        }
-    }catch(err) {
-        console.log(err);
-    }
     const user = interaction.options.getUser('target');
     const dotData = await profileModel.findOne({ userID: user.id});
     const amount = Math.floor(Math.random() * 50) + 1;

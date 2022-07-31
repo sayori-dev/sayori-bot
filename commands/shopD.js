@@ -8,17 +8,18 @@ module.exports = {
 		.setDescription('Shows what you can buy'),   
 	async execute(interaction){
     const embed1 = new MessageEmbed()
-    .setTitle('buy things!')
+    .setTitle('Buy things!')
     .setColor('#b499a1')
     .addFields(
-        {name: "head cooler", value: `${items.coolhead}`},
-        {name: "colored pens", value: `${items.colored_pens}`},
-        {name: "bank note", value: `${items.bank_note}`},
-        {name: "fishing rod", value: `${items.fishing_rod}`},
-        {name: "hunting rifle", value: `${items.hunt_rifle}`}
+        {name: "Head cooler", value: `${items.coolhead}`},
+        {name: "Colored pens", value: `${items.colored_pens}`},
+        {name: "Bank note", value: `${items.bank_note}`},
+        {name: "Fishing rod", value: `${items.huntingEtc.fishing_rod}`},
+        {name: "Hunting rifle", value: `${items.huntingEtc.hunt_rifle}`},
+        {name: "Phone", value: `${items.phone}`},
+        {name: "Trophy", value: `${items.Achievments.trophy}`}
     )
-    interaction.reply("omor");
-    interaction.deleteReply();
+    interaction.reply("Hope you like the bot!");
     interaction.channel.send({ embeds: [embed1] });
     }
 }

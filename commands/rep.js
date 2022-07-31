@@ -6,31 +6,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rep')
 		.setDescription('get an amount of money from your bank')
-        .addNumberOption(option => option.setName('num').setDescription('Enter a number')),
+        .addNumberOption(option => option.setName('num').setDescription('Enter a number')
+        .setRequired(true)),
 	async execute(interaction){
         const number = interaction.options.getNumber('num');
         let profileData;
-    try {
         profileData = await profileModel.findOne({ userID: interaction.member.id });
-        if (!profileData) {
-            let profile = await profileModel.create({
-                userID: interaction.member.id,
-                serverID: interaction.guild.id,
-                coins: 1000,
-                bank: 0,
-                robbing: 1,
-                childSafe: 0,
-                crime: 0,
-                work: 0,
-                cohead: 0,
-                copens: 0,
-                noba: 0,
-            });
-            profile.save();
-        }
-    }catch(err) {
-        console.log(err);
-    }
     if(number > profileData.bank){
         interaction.reply("you dont have this much coins");
     }else{

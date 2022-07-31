@@ -4,20 +4,25 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Replies with help commands!'),
+		.setDescription('Replies with help commands!')
+		.addStringOption(option =>
+            option.setName('category')
+                .setDescription('The rob category')
+                .setRequired(true)
+                .addChoice('fun commands', 'fcom')
+                .addChoice('currency commands', 'ccom')
+                .addChoice('mod only commands (WIP)', 'moc')
+                .addChoice('other commands', 'oc')),
 	async execute(interaction){
-		interaction.reply("omor");
-           interaction.deleteReply();
-		const embed1 = new MessageEmbed()
-		.setTitle('help commands')
-		.setColor('#b499a1')
-		.addFields(
-			{name: "fun commands", value: '/fun_commands'},
-			{name: "currency commands", value: '/help_currency'},
-			{name: "mod only commands", value: '/mod_help'},
-			{name: "other commands", value: 'bugreport, invitebot, invite'},
-		)
-
-       interaction.channel.send({ embeds: [embed1] });
+		const string = interaction.options.getString('category')
+		if(string == 'fcom'){
+		interaction.reply("dab, wiki, reddit, facereveal, cookie"); 
+		}else if(string == 'ccom'){
+		interaction.reply("rob(user), sell, work, shop, rep, profile, fish, dep, db(YOU NEED TO DE THIS FIRST BEFORE USING THESE COMMANDS), community-service, childmode, buy, beg, bal");
+		}else if(string == 'moc'){
+		interaction.reply("N/A");
+		}else if(string == 'oc'){
+		interaction.reply("ping");
+		}
     }
 }

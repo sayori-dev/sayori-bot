@@ -22,27 +22,9 @@ module.exports = {
 	async execute(interaction) {
         let profileData;
         //start random number thingy
-    try {
         profileData = await profileModel.findOne({ userID: interaction.member.id });
-        if (!profileData) {
-            let profile = await profileModel.create({
-                userID: interaction.member.id,
-                serverID: interaction.guild.id,
-                coins: 1000,
-                bank: 0,
-                robbing: 1,
-                childSafe: 0,
-                cohead: 0,
-                copens: 0,
-                noba: 0,
-            });
-            profile.save();
-        }
-    }catch(err) {
-        console.log(err);
-    }
-    const randomNumber = Math.floor(Math.random() * 50) + 1;
-    const response = await profileModel.findOneAndUpdate({
+    const randomNumber = Math.floor(Math.random() * 20) + 1;
+    await profileModel.findOneAndUpdate({
         userID: interaction.member.id           
     }, 
     {
@@ -56,7 +38,7 @@ const peoples = Math.floor(Math.random() * people.length);
 //end random ppl thingy
 const real = Math.floor(Math.random() * 40) +1;
 if(real < "19"){
-    const response = await profileModel.findOneAndUpdate({
+    await profileModel.findOneAndUpdate({
         userID: interaction.member.id           
     }, 
     {

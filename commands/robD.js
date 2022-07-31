@@ -18,24 +18,7 @@ module.exports = {
                     const string = interaction.options.getString('category')
 					if(string === 'turns it off'){
                         let profileData;
-                        try {
-                            profileData = await profileModel.findOne({ userID: interaction.member.id });
-                            if (!profileData) {
-                                let profile = await profileModel.create({
-                                    userID: interaction.member.id,
-                                    serverID: interaction.guild.id,
-                                    coins: 1000,
-                                    bank: 0,
-                                    robbing: 1,
-                                    cohead: 0,
-                                    copens: 0,
-                                    noba: 0,
-                                });
-                                profile.save();
-                            }
-                        }catch(err) {
-                            console.log(err);
-                        }
+                        profileData = await profileModel.findOne({ userID: interaction.member.id });
                     if (profileData.robbing > 0) { 
                         await profileModel.findOneAndUpdate(        {
                             userID: interaction.member.id

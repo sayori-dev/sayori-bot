@@ -10,7 +10,8 @@ module.exports = {
             "how about no",
             "i-if you insist",
             "w-why?",
-            "n-no"
+            "n-no",
+            "die"
         ];
         
         const Response = Math.floor(Math.random() * Responses.length);       

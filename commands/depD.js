@@ -17,7 +17,7 @@ module.exports = {
         interaction.reply("you dont have this much coins");
     }else{
         interaction.reply(`you now have ${number} coin(s) in your bank`);
-        await profileModel.findOneAndUpdate(        {
+        await profileModel.findOneAndUpdate({
             userID: interaction.member.id
             },
             {

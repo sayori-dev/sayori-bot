@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const profileModel = require('../models/profileSchema');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
         let profileData;
         profileData = await profileModel.findOne({ userID: interaction.member.id });		
-            const embed1 = new MessageEmbed()
+        const embed1 = new EmbedBuilder()
             .setTitle('your balace!')
             .setColor('#b499a1')
             .addFields(

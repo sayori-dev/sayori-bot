@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,7 +11,7 @@ module.exports = {
         const string = interaction.options.getString('input');
     const channel = interaction.client.channels.cache.get("834034498231861248");
 
-    const embed1 = new MessageEmbed()
+    const embed1 = new EmbedBuilder()
     .setTitle('new command!!!!')
     .setColor('#b499a1')
     .addFields(
@@ -19,7 +19,7 @@ module.exports = {
         {name: "From:", value: `${interaction.guild}`},
         {name: "command", value: `${string}`}
     )
-    interaction.reply("command idea has been sent!~ (if you want to help make the bot better: https://forms.gle/2hFnMjA5wuuM7qHb9wuuM7qHb9)");
+    interaction.reply("command idea has been sent!~ (if you want to help make the bot better: https://docs.google.com/forms/d/e/1FAIpQLSev-UvIhwTPlU9bIMfjEI2xTIdavJ73xfsA_V4S3Rhqg34Oqg/viewform?usp=sf_link)");
     channel.send({ embeds: [embed1] });
     }
 } 

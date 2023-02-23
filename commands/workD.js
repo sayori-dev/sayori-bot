@@ -33,7 +33,7 @@ module.exports = {
     
         }
     ); 
-    interaction.reply("you now work at a coder!"); 
+    interaction.reply("you now work as a coder!"); 
     }else if(string == 'ofj' && profileData.crime <2.5 && profileData.level >= 1 && profileData.work == 0){
         await profileModel.findOneAndUpdate(        {
             userID: interaction.member.id

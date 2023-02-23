@@ -13,7 +13,6 @@ module.exports = {
             if (!profileData) {
                 let profile = await profileModel.create({
                     userID: interaction.member.id,
-                    serverID: interaction.guild.id,
                     coins: 1000,
                     bank: 0,
                     robbing: 1,
@@ -30,10 +29,13 @@ module.exports = {
                     animal: 0,
                     phone: 0,
                     trophy: 0,
-                    pet: 0
+                    pet: 0,
+                    ads: 0
 
                 });
                 profile.save();
+            }else {
+                interaction.reply("you've already been added! thanks to much!")
             }
         }catch(err) {
             console.log(err);

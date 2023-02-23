@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Replies with help commands!')
+		.setDescription('use !DB to use the currency commands!')
 		.addStringOption(option =>
             option.setName('category')
                 .setDescription('The rob category')
@@ -18,11 +18,11 @@ module.exports = {
 		if(string == 'fcom'){
 		interaction.reply("dab, wiki, reddit, facereveal, cookie"); 
 		}else if(string == 'ccom'){
-		interaction.reply("rob(user), sell, work, shop, rep, profile, fish, dep, db(YOU NEED TO DE THIS FIRST BEFORE USING THESE COMMANDS), community-service, childmode, buy, beg, bal");
+		interaction.reply("rob(user), sell, work, shop, rep, profile, fish, dep, db, community-service, childmode, buy, beg, bal");
 		}else if(string == 'moc'){
 		interaction.reply("N/A");
 		}else if(string == 'oc'){
-		interaction.reply("ping");
+		interaction.reply("ping,");
 		}
     }
 }

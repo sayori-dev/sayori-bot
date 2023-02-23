@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { time } = require('discord.js');
 const profileModel = require('../models/profileSchema');
 const people = [
     "Will smith",
@@ -7,12 +8,22 @@ const people = [
     "PewDiePie",
     "Your mom",
     "Your dad",
-    "Sayori bot, wait what how she's dead. Anyway you asked her",
+    "Sayori bot, wait what how? She's dead. Anyway you asked her",
     "Sayori",
     "Poulpo",
     "A racoon",
     "A homeless man",
-    "Your sister in law"
+    "Your sister in law",
+    "Bob",
+    "Troy",
+    "Beatrix",
+    "Alex",
+    "Brian",
+    "Some random dude",
+    "Your grandpa",
+    "Roy",
+    "The rock",
+    "Joe biden"
 ];
 
 module.exports = {
@@ -35,9 +46,11 @@ module.exports = {
 );
 //end random number thingy  
 const peoples = Math.floor(Math.random() * people.length);
+
+const peopless = Math.floor(Math.random() * people.length +1);
 //end random ppl thingy
 const real = Math.floor(Math.random() * 40) +1;
-if(real < "19"){
+if(real < "19" ){
     await profileModel.findOneAndUpdate({
         userID: interaction.member.id           
     }, 
@@ -47,7 +60,7 @@ if(real < "19"){
         },
     }
 );
-    return interaction.reply(`${interaction.member}, You asked ${people[peoples]} but, They said "ask your brother"`);  
+    return interaction.reply(`${interaction.member}, You asked ${people[peoples]} but, They said "Ask ${people[peopless]}"`);  
 }else if(randomNumber == "1" ){
     return interaction.reply(`${interaction.member}, Great job you asked ${people[peoples]} for ${randomNumber} Coin`);
 }else{

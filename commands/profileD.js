@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const profileModel = require('../models/profileSchema');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 
 
@@ -15,7 +15,7 @@ module.exports = {
     const funny = profileData.childSafe === 1 ? 'on' : 'off'
     const funny1 = profileData.robbing === 1 ? 'on' : 'off'
 
-        const embed1 = new MessageEmbed()
+    const embed1 = new EmbedBuilder()
         .setTitle('Your profile!')
         .setColor('#b499a1')
         .addFields(
